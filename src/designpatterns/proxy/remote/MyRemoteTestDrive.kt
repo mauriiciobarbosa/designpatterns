@@ -1,4 +1,4 @@
-package designpatterns.proxy
+package designpatterns.proxy.remote
 
 import java.rmi.Naming
 
