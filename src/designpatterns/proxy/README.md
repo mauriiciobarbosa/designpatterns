@@ -17,6 +17,8 @@ What's a "remote object"? It's an object that lives in the heap of a different J
 remote object that is running in a different address space). What's a "local representative"? It's an object that you can 
 call local methods on and have them forwarded on to the remote object.
 
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Proxy_pattern_diagram.svg/439px-Proxy_pattern_diagram.svg.png">
+
 ### Virtual Proxy
 
 ### Protection Proxy
