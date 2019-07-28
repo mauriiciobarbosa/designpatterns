@@ -12,12 +12,15 @@ the proxy "control access". The most known type of proxies are: Remote proxy, Vi
 
 ### Remote Proxy
 
-A Remote Proxy controls access to a remote object. It acts as a local representative (stub) to a remote object (skeleton). 
+A Remote Proxy controls access to a remote object. It acts as a local representative to a remote object (skeleton). 
 What's a "remote object"? It's an object that lives in the heap of a different Java Virtual Machine (or more generally, a 
 remote object that is running in a different address space). What's a "local representative"? It's an object that you can 
 call local methods on and have them forwarded on to the remote object.
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Proxy_pattern_diagram.svg/439px-Proxy_pattern_diagram.svg.png">
+
+In my example, I used the Java RMI library, which generates a local representative (stub) that forwards all requests to 
+a remote object (skeleton) previously registered on the RMI.
 
 ### Virtual Proxy
 
