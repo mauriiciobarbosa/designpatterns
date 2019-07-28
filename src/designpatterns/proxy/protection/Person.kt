@@ -1,4 +1,4 @@
-package designpatterns.proxy.dynamic
+package designpatterns.proxy.protection
 
 class Person(
     private var _name: String,

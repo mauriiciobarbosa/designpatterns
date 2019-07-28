@@ -1,4 +1,4 @@
-package designpatterns.proxy.dynamic
+package designpatterns.proxy.protection
 
 import java.lang.reflect.InvocationHandler
 import java.lang.reflect.Method
