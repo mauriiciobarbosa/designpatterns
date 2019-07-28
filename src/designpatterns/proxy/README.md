@@ -29,12 +29,12 @@ the object until it's needed. The virtual proxy also acts as a surrogate for the
 After that, the proxy delegates requests directly to the Real Subject.
 
 In our example we simulated an application which loads images from the internet based on a url. So, while the image is being
-retrieved, the proxy shows a label explaining that the image is being load. After this process finish, the proxy creates the
+retrieved, the proxy shows a label with further information. After the process finishes, the proxy creates the
 real object and defers the real work of showing the image to it.
 
 ### Protection Proxy
 
-A `Protection Proxy` controls access to a resource based on access rights. This is a good example to use a sightly different
+A `Protection Proxy` controls access to a resource based on access rights. This is a good example to use a slightly different
 type of proxy: `Dynamic Proxy`, which allows you create a Proxy class on the fly that implements one or more interfaces
 and forwards methods invocations to a class that you specify.
 
@@ -42,8 +42,8 @@ and forwards methods invocations to a class that you specify.
 
 In our example we simulated a dating service. We wanted to make sure that people would just change their own 
 personal information, like interests, while rating someone else would be still possible. In order to do that, we used the
-Java Proxy API and created two Invocation Handlers: One to the profile owner, and another one for non owner profiles. They control 
-access for all requests on the Person object, and throws a IllegalAccessException for non permitted request based on the profile.  
+`Java Proxy API` and created two `Invocation Handlers`: One for the profile owner, and another one for non owner profiles. They control 
+access for all requests on the `Person object`, and throws a `IllegalAccessException` for non permitted request based on the profile.  
 
 ## Pros and Cons
 
@@ -52,7 +52,7 @@ access for all requests on the Person object, and throws a IllegalAccessExceptio
 + You can controls the service object without clients knowing about it.
 + You can manage the lifecycle of the service object when clients don't care about it.
 + The proxy works even if the service object isn't ready or isn't available.
-+ Open/Closed principle. You can introduce new proxies without changing the service or clients.
++ `Open/Closed principle`. You can introduce new proxies without changing the service or clients.
 
 ### Cons
 
@@ -63,4 +63,4 @@ access for all requests on the Person object, and throws a IllegalAccessExceptio
 
 There're dozen of real world examples of `proxy pattern` in libraries that we use on our professional or pet projects. The first one
 is the `Retrofit API`, that make use of `dynamic proxy` to perform `http` requests. In the kotlin language, we have the keyword
-`lazy` that acts as a `virtual proxy`, deferring the real object initialization when it's first requested.
+`lazy` that acts as a `virtual proxy`, deferring the real object initialization when it's first required.

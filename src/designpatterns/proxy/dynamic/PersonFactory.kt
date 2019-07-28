@@ -16,8 +16,8 @@ object PersonFactory {
         }
 
         return Proxy.newProxyInstance(
-            PersonBean::class.java.classLoader,
-            arrayOf(PersonBean::class.java),
+            person::class.java.classLoader,
+            person::class.java.interfaces,
             invocationHandler
         ) as PersonBean
     }

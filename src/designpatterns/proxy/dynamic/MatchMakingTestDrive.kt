@@ -1,5 +1,7 @@
 package designpatterns.proxy.dynamic
 
+import java.lang.reflect.UndeclaredThrowableException
+
 fun main() {
     val owner = PersonFactory.createPerson(name = "Joe Javabean", gender = "Male", isOwner = true)
 
@@ -9,8 +11,8 @@ fun main() {
 
     try {
         owner.hotOrNotHotRating = 10
-    } catch (e: Exception) {
-        println(e.message)
+    } catch (e: UndeclaredThrowableException) {
+        println(e.undeclaredThrowable.message)
     }
 
     println("Rating is ${owner.hotOrNotHotRating}")
@@ -21,8 +23,8 @@ fun main() {
 
     try {
         nonOwner.interests = "bowling, Go"
-    } catch (e: Exception) {
-        println(e.message)
+    } catch (e: UndeclaredThrowableException) {
+        println(e.undeclaredThrowable.message)
     }
 
     nonOwner.hotOrNotHotRating = 3
