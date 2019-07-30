@@ -5,7 +5,7 @@ This package is a sample about the `State` Pattern. The main goal is serve as a 
 
 ## Overview
 
-The State Pattern allows an object to alter its behavior when its internal state changes.
+The `State Pattern` allows an object to alter its behavior when its internal state changes.
 The object will appear to change its class.
 
 Because the pattern encapsulates state into separate classes and delegates to the object representing
@@ -56,7 +56,7 @@ How you can see, `State Pattern` can be used in a lot of use cases.
 
 For instance, the `JSF Framework` uses
 this pattern to controls its lifecycle. `Lifecycle` collaborates with different phases in order to execute a JSF request.
-An phase is an abstract class that defines the common interface for every step. In the `JSF Framework`, six phases are defined:
+A `Phase` is an abstract class that defines the common interface for every step. In the `JSF Framework`, six phases are defined:
 `RestoreViewPhase`, `ApplyRequestValues`, `ProcessValidationPhase`, `UpdateValueModelPhase`, `InvokeApplicationPhase`, and
 `RenderResponsePhase`.
 
