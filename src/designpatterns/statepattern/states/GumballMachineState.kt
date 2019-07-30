@@ -9,6 +9,6 @@ interface GumballMachineState {
     }
 
     enum class State {
-        NO_QUARTER, HAS_QUARTER, SOLD, SOLD_OUT
+        NO_QUARTER, HAS_QUARTER, SOLD, SOLD_OUT, WINNER
     }
 }

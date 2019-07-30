@@ -7,6 +7,7 @@ fun main() {
     testTurnCrankBeforeInsertQuarter(machine)
     testEjectQuarterBeforeInsertQuarter(machine)
     testSoldOut(GumballMachine(0))
+    testWinnerPath(GumballMachine(10))
 }
 
 fun testEjectQuarterBeforeInsertQuarter(machine: GumballMachine) {
@@ -35,4 +36,24 @@ fun testInsertTwoQuarters(machine: GumballMachine) {
 fun testHappyPath(machine: GumballMachine) {
     machine.insertQuarter()
     machine.turnCrank()
+}
+
+fun testWinnerPath(gumballMachine: GumballMachine) {
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
+
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
+
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
+
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
+
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
+
+    gumballMachine.insertQuarter()
+    gumballMachine.turnCrank()
 }

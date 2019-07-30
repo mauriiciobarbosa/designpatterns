@@ -11,7 +11,8 @@ class GumballMachine(inventory: Int) {
         GumballMachineState.State.NO_QUARTER to NoQuarterState(this),
         GumballMachineState.State.HAS_QUARTER to HasQuarterState(this),
         GumballMachineState.State.SOLD to SoldState(this),
-        GumballMachineState.State.SOLD_OUT to SoldOutState(this)
+        GumballMachineState.State.SOLD_OUT to SoldOutState(this),
+        GumballMachineState.State.WINNER to WinnerState(this)
     )
     private var currentState: GumballMachineState
 
