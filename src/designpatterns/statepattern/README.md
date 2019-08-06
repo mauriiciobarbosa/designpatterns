@@ -17,7 +17,7 @@ composition to give the appearance of a class change by simply referencing diffe
 
 <br />![State Pattern ](https://sourcemaking.com/files/v2/content/patterns/State1-2x.png)<br /><br />
 
-In our example we simulated a Gumball Machine. It has several states which can bed changed by some kind of events, as
+In our example we simulated a Gumball Machine. It has several states which can be changed by some kind of events, as
 when the client inserts a quarter or turn the crank. Instead of add some conditionals to each event in the Gumball machine
 class, we prefer encapsulate the states into separated classes. In that way, when the Gumball machine receives an event, 
 it just delegates to the current state which is supposed to handle the event and, if needed, ask for the Gumball machine 
