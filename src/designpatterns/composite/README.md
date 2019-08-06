@@ -5,13 +5,13 @@ The `Composite Pattern` allows you to compose objects into tree structures to re
 Composite lets clients treat individual objects and compositions of objects uniformly.
 
 Using a design pattern that follows the `Composite Pattern` allow us to write some simple code that can apply the same
-operation (like printing) over the entire structure. In other words, in most case we can ignore the differences between 
+operation (like printing) over the entire structure. In most cases we can ignore the differences between 
 compositions of objects and individual objects.
 
 <br />![Composite Pattern ](http://www.java2novice.com/images/composite.png)<br /><br />
 
 In our example we created a math framework to handle basic math operations using the `Composite Pattern`. Each operation 
-is wrapped in a `composite object` which contains two other components. Each component can be a number (`leaf`) or another 
+is wrapped into a `composite object` which contains two other components. Each component can be a number (`leaf`) or another 
 operation. In order to get the result we just need to execute the `eval()` method at the root component. 
 The root component delegates to their children the operation and uses the result to calculate its operation.
 
