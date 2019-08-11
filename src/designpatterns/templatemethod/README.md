@@ -15,8 +15,8 @@ points, if they wish. A subclass is also free to ignore the hook.
 
 In our example we used `Template Method` to create a Caffeine beverage. These beverages have a common preparation process:
 boil the water, brew, pour into cup and add condiments. But two steps of this process changes according to the beverage type.
-So, we choose to create a base class called `CaffeineBevarage` which encapsulate the preparation process (algorithm) and 
-delegates to subclasses some steps of it. 
+So, we choose to create a base class called `CaffeineBevarage` which encapsulates the preparation process (algorithm) and 
+delegates to its subclasses some steps. 
 
 Following this approach we have some benefits:
 * We protect the algorithm. 
@@ -48,7 +48,7 @@ The `Factory Method` is a specialization of `Template Method`.
 + You can let subclasses override only certain parts of a large algorithm, making them less affected by changes that
 happen to other parts of the algorithm.
 + You can pull the duplicate code into a superclass.
-+ `Hollywood Princple`. Clients will depend on the abstraction rather than a concrete class, which reduces dependencies 
++ `Hollywood Principle`. Clients will depend on the abstraction rather than a concrete class, which reduces dependencies 
 in the overall system. 
 
 ### Cons
@@ -68,6 +68,6 @@ the `sort()` method works slightly different because its designers wanted it to 
 
 The `Activity` class in the `Android SDK` is another example of `Template Method`. This class provides
 some hooks while transitioning between different states, like `onCreate()` method which you can override for setting 
-the UI to be displayed through the `setContentView(View)` method.
+the UI to be displayed through `setContentView(View)` method.
 
 
