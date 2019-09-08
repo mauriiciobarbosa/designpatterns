@@ -1,50 +1,52 @@
 Facade Pattern
 ======================
 
-The `Adapter Pattern` converts the interface of a class into another interface the client expects. Adapter lets classes 
-work together that couldn't otherwise because of incompatible interfaces.
+The `Facade Pattern` provides a unified interface to a set of interfaces in a subsystem. Facade defines a higher-level
+interface that makes the subsystem easier to use.
 
-This acts to decouple the client from the implemented interface, and if we expect the interface to change over time, 
-the adapter encapsulates that change so that the client doesn't have to be modified each time it needs to operate against
-a different interface.
+To use the `Facade Pattern`, we create a class that simplifies and unifies a set of more complex classes that belong to
+some subsystem.
 
-There are actually two kinds of adapters: `Object Adapters` and `Class Adapters`. The only difference is that with
-`Class Adapter` we subclass the Target and the Adaptee, while with `Object Adapter` we use composition to pass requests
-to an Adaptee.
+The Facade allows us to avoid tight coupling between clients and subsystem, and also helps us adhere to the 
+`Principle of Least Knowledge`.
 
-<br />![Object Adapter](https://www.dofactory.com/images/diagrams/net/adapter.gif)<br /><br />
+<br />![Facade Adapter](https://anandabhisheksingh.me/wp-content/uploads/2018/09/facade_pattern.png)<br /><br />
 
-We used a simple example to explain the power of this pattern. We have a class called `Catalog` that we use to print all 
-products available in our store. But this class is very old and still uses a `Enumeration` to traverse for all the items.
-As the new collections, like `ArrayList`, has only support for the new way to traverse collections (using `Iterator`) 
-we needed to create a adaoter which can convert a `Iterator` into a `Enumeration`.
+In our example we create a `HomeTheater` class to "coordinate" the use of different devices (`DvdPlayer`, `Projector`, 
+`PopcornPopper`, etc). The `HomeTheaterTestDrive` class acts as a client, it doesn't talk with all devices to make
+some action, like watch a movie, it just need to ask the `HomeTheater` class which knows all the steps needed to complete 
+the task.
 
 ## Relationship with other patterns
 
 `Facade` defines a new interface for existing objects, whereas `Adapter` tries to make the existing interface usable.
 `Adapter` usually wraps just one object, while `Facade` works with an entire subsystem of objects.
 
+`Abstract Factory` can serve as an alternative to `Facade` when you only want to hide the way the subsystem objects are
+created from the client code.
+
 ## Pros and Cons
 
 ### Pros
 
-+ `Single Responsibility Principle`. You can separate the interface or data conversion code from the primary business 
-logic of the program.
-+ `Open/Closed Principle`. You can introduce new type of Adapters into the program without breaking the existing client
-code, as long as they work with the adapters through the client interface.
++ You can isolate your code from the complexity of a subsystem.
 
 ### Cons
 
-+ The overall complexity of the code increases because you need to introduce a set of new interfaces and classes.
-Sometimes it's simpler just to change the service class so that it matches the rest of your code.
++ A facade can become a god object coupled to all classes of an app.
 
-## Real world examples
+## Applicability
 
-`Adapter` is another pattern very useful in a lot of frameworks.
+**Use the Facade pattern when you need to have a limited bu straightforward interface to a complex subsystem**
 
-For instance, in the `Android SDK` we've a very popular UI component called `RecyclerView` which we use to render a 
-list of items. But `RecyclerView` only knows how to show `View` objects. We need to provide an `Adapter` in order to make
-use of this component. The `RecyclerViewAdapter` help us to convert a list of any kind of items in the domain the `RecyclerView`
-component needs to do its job.
+Often, subsystems get more complex over time. Even applying design patterns typically leads to creating more classes. A
+subsystem may become more flexible and easier to reuse in various contexts, but the amount of configuration and boilerplate
+code it demands from a client grows ever larger. The Facade attempts to fix this problem by providing a shortcut to the
+most-used features of the subsystem which fits most clients requirements.
+
+**Use the Facade when you want to structure a subsystem into layers**
+
+Create facades to define entry points to each level of a subsystem. You can reduce coupling between multiple subsytems
+by requiring them to communicate only through facades.
 
 
