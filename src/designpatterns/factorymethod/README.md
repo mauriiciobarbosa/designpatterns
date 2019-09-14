@@ -59,3 +59,11 @@ method. While this method returns `Button` objects in the base class, you make y
 Now use the `UIWithRoundButtons` class instead of `UIFramework`. And that's all about.
 
 
+## Real world examples
+
+In the `JSF` architecture, the `Factory Method` is used to create objects. For instance, `LifeCycleFactory` is a factory
+object that creates and returns `LifeCycle` instances. The `LifeCycleFactory.getLifeCycle(String lifeCycleId)` method is
+a *factory method* that creates and returns `Lifecycle` instances based on an id. Custom JSF implementation can redefine
+an abstract `getLifeCycle()` method to create a custom `Lifecycle` instance. Default JSF implementation gives the default
+`LifeCycle` instance.
+
