@@ -1,69 +1,50 @@
-Factory Method Pattern
+Abstract Factory Pattern
 ======================
 
-`The Factory Method Pattern` defines an interface for creating an object, but lets subclasses decide which class to instantiate.
-Factory Method lets a class defer instantiation for subclasses.
+`The Abstract Factory Pattern` provides an interface for creating families of related or dependent objects without
+specifying their concrete classes.
 
-All factory patterns encapsulate object creation. The `Factory Method` pattern encapsulates object creation by letting
-subclasses decide what objects to create. This decouple the client code in the superclass from the object creation code 
-in the subclass.
+An `Abstract Factory` gives us an interface for creating a family of products. By writing code that uses this interface,
+we decouple our code from the actual factory that creates the products. That allows us to implement a variety of factories
+that produce products meant for different contexts - such as different regions, different operating systems, or different
+look and feels.
 
-Looking in te class diagram below, you can see that the abstract `Creator` gives you an interface with a method to creating
-objects, also known as the `factory method`. Any other methods implemented in the abstract Creator are written to operate
-on `products` produced by the factory method. Only subclasses actually implement the factory method and create products.
+Applying this pattern makes your code decoupled from the actual products, so you can substitute different factories to
+get different behaviors.
 
-<br />![Factory Method Pattern](https://www.dofactory.com/images/diagrams/net/factory.gif)<br /><br />
+<br />![Abstract Factory Pattern](http://javacurious.files.wordpress.com/2013/03/af_dp.png?w=960)<br /><br />
 
-In our example we created a framework that ties the store and the pizza creation together, yet still allows things to 
-remain flexible. The `PizzaStore` class is the abstract Creator which defers to subclasses (pizza stores from different places)
-the creation of `Pizza` (the product) in order to prepare it.
+In our example we created a framework to provide a family of ingredients in order to make pizzas. Each region has a
+`PizzaIngredientFactory` that is used to provide ingredients for pizzas of different flavors.
 
 ## Pros and Cons
 
 ### Pros
 
-+ You avoid tight coupling between the creator and the concrete products.
-+ `Single Reponsibility Principle`. You can move the product creation code into one place in the program, making the code
-easier to support.
-+ `Open/Closed Principle`. You can introduce new types of products into the program without breaking existing client code.
++ You can be sure that the products you're getting from a factory are compatible with each other.
++ You avoid tight coupling between concrete products and client code.
++ `Single Responsibility Principle`. You can extract the product creation code into one place, making the code easier to support.
++ `Open/Closed Principle`. You can introduce new variants of products without breaking existing client code.
 
 ### Cons
 
-+ The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best
-case scenario is when you're introducing the pattern into an existing hierarchy of creator classes.
++ The code may become more complicated than it should be, since a lot of new interfaces and classes are introduced along 
+with the pattern.
 
 
 ## Relations with other Patterns
 
 + `Abstract Factory` classes are often based on a set of `Factory Methods`, but you can also use `Prototype` to compose
 the methods on these classes.
-+ `Factory Method` is a specialization of `Template Method`. At the same time, a Factory Method may serve as a step in a
-large Template Method.
++ `Abstract Factories`, `Builders` and `Prototypes` can all be implemented as `Singletons`.
 
 ## Applicability
 
-**Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.**
+**Use the Abstract Factory when your code needs to work with various families of related products, but you don't want it
+to depend on the concrete classes of those products - they might be unknown beforehand or you simply want to allow for future
+extensibility.**
 
-Inheritance is probably the easiest way to extend default behavior of a library or framework. But how would the framework
-recognize that your subclass should be used instead of a standard component?
-
-The solution is to reduce the code that constructs components across the framework into a single factory method and let
-anyone override this method in addition to extend the component itself.
-
-Let's see how that would work. Imagine that you write an app using an open source UI framework. You app should have
-round buttons, but the framework only provides square ones. You extend the Standard `Button` class with a `RoundButton`
-subclass. But now you need to tell the main `UIFramework` class to use the new button subclass instead of a default one.
-
-To achieve this, you create a subclass `UIWithRoundButtons` from a base framework class and override its `createButton`
-method. While this method returns `Button` objects in the base class, you make your subclasses return `RoundButton` objects.
-Now use the `UIWithRoundButtons` class instead of `UIFramework`. And that's all about.
-
-
-## Real world examples
-
-In the `JSF` architecture, the `Factory Method` is used to create objects. For instance, `LifeCycleFactory` is a factory
-object that creates and returns `LifeCycle` instances. The `LifeCycleFactory.getLifeCycle(String lifeCycleId)` method is
-a *factory method* that creates and returns `Lifecycle` instances based on an id. Custom JSF implementation can redefine
-an abstract `getLifeCycle()` method to create a custom `Lifecycle` instance. Default JSF implementation gives the default
-`LifeCycle` instance.
+The `Abstract Factory` provides you with an interface for creating objects from each class of the product family. As long
+as you code creates objects via this interface, you don't have to worry about creating the wrong variant of a product which
+doesn't match the products already created by your app.
 
