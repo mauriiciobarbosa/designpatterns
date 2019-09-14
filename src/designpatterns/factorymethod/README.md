@@ -3,17 +3,13 @@ Factory Method Pattern
 
 The `Singleton Pattern` ensures a class has only one instance, and provides a global point of access to it.
 
-This pattern takes a class and lets it manage single instance of itself. It also prevents any other class from
-creating a new instance of its own.
-
-Furthermore, the `Singleton Pattern` also provides a global access point to the instance: whenever you need a instance,
-just query the class and it will hand you back the single instance. 
+A `Factory Method` handles object creation and encapsulates it in a subclass. This decouple the client code in the superclass
+from the object creation code in the subclass.
 
 <br />![Singleton Pattern](https://reactiveprogramming.io/public/books/patterns/img/patterns-articles/singleton-diagram.png)<br /><br />
 
-In our example we use a `Database` class as a shared resource between two features: `FeatureA` and `FeatureB`. As the `Database`
-is a heavy resource to initialize every time, we made it a singleton in order to reuse the same instance among these 
-features classes.
+In our example we created a framework that ties the store and the pizza creation
+together, yet still allows things to remain flexible.
 
 ## Pros and Cons
 

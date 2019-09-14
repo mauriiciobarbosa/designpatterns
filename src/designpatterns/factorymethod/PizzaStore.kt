@@ -1,19 +1,18 @@
 package designpatterns.factorymethod
 
-import designpatterns.factorymethod.pizza.Pizza
-import designpatterns.factorymethod.pizza.SimplePizzaFactory
+abstract class PizzaStore {
 
-class PizzaStore(
-    private val pizzaFactory: SimplePizzaFactory
-) {
+    abstract val name: String
 
     fun orderPizza(type: String): Pizza {
-        return pizzaFactory.createPizza(type).apply {
-            prepapre()
+        return createPizza(type).apply {
+            prepare()
             bake()
             cut()
             box()
         }
     }
+
+    abstract fun createPizza(type: String): Pizza
 
 }
