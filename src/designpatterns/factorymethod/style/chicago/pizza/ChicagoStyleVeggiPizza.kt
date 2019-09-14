@@ -10,7 +10,7 @@ class ChicagoStyleVeggiPizza : Pizza() {
     override val sauce: String
         get() = "Plum Tomato sauce"
     override val toppings: List<String>
-        get() = emptyList()
+        get() = listOf("Mozzarella", "Parmesan", "Eggplant", "Spinach", "Black Olives")
 
     override fun cut() {
         println("Cutting the Pizza into square slices")

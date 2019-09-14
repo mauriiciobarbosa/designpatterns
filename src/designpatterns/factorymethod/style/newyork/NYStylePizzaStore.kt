@@ -4,7 +4,7 @@ import designpatterns.factorymethod.Pizza
 import designpatterns.factorymethod.PizzaStore
 import designpatterns.factorymethod.style.newyork.pizza.NYStyleCheesePizza
 import designpatterns.factorymethod.style.newyork.pizza.NYStyleClamPizza
-import designpatterns.factorymethod.style.newyork.pizza.NYStylePeperoniPizza
+import designpatterns.factorymethod.style.newyork.pizza.NYStylePepperoniPizza
 import designpatterns.factorymethod.style.newyork.pizza.NYStyleVeggiPizza
 
 class NYStylePizzaStore : PizzaStore() {
@@ -15,7 +15,7 @@ class NYStylePizzaStore : PizzaStore() {
         return when (type.toLowerCase()) {
             "cheese" -> NYStyleCheesePizza()
             "clam" -> NYStyleClamPizza()
-            "pepperoni" -> NYStylePeperoniPizza()
+            "pepperoni" -> NYStylePepperoniPizza()
             "veggi" -> NYStyleVeggiPizza()
             else -> throw IllegalArgumentException("We don't have pizza of $type")
         }

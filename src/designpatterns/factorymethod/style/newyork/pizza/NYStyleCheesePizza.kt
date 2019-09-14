@@ -10,5 +10,5 @@ class NYStyleCheesePizza : Pizza() {
     override val sauce: String
         get() = "Marinara sauce"
     override val toppings: List<String>
-        get() = listOf("Grated Reggiano Cheese")
+        get() = listOf("Grated Reggiano Cheese", "Gartic")
 }
