@@ -1,47 +1,61 @@
 Factory Method Pattern
 ======================
 
-The `Singleton Pattern` ensures a class has only one instance, and provides a global point of access to it.
+`The Factory Method Pattern` defines an interface for creating an object, but lets subclasses decide which class to instantiate.
+Factory Method lets a class defer instantiation for subclasses.
 
-A `Factory Method` handles object creation and encapsulates it in a subclass. This decouple the client code in the superclass
-from the object creation code in the subclass.
+All factory patterns encapsulate object creation. The `Factory Method` pattern encapsulates object creation by letting
+subclasses decide what objects to create. This decouple the client code in the superclass from the object creation code 
+in the subclass.
 
-<br />![Singleton Pattern](https://reactiveprogramming.io/public/books/patterns/img/patterns-articles/singleton-diagram.png)<br /><br />
+Looking in te class diagram below, you can see that the abstract `Creator` gives you an interface with a method to creating
+objects, also known as the `factory method`. Any other methods implemented in the abstract Creator are written to operate
+on `products` produced by the factory method. Only subclasses actually implement the factory method and create products.
 
-In our example we created a framework that ties the store and the pizza creation
-together, yet still allows things to remain flexible.
+<br />![Factory Method Pattern](https://www.dofactory.com/images/diagrams/net/factory.gif)<br /><br />
+
+In our example we created a framework that ties the store and the pizza creation together, yet still allows things to 
+remain flexible. The `PizzaStore` class is the abstract Creator which defers to subclasses (pizza stores from different places)
+the creation of `Pizza` (the product) in order to prepare it.
 
 ## Pros and Cons
 
 ### Pros
 
-+ You can be sure that a class has only a single instance.
-+ You gain a global access point to that instance.
-+ The singleton object is initialized only when it's first requested.
++ You avoid tight coupling between the creator and the concrete products.
++ `Single Reponsibility Principle`. You can move the product creation code into one place in the program, making the code
+easier to support.
++ `Open/Closed Principle`. You can introduce new types of products into the program without breaking existing client code.
 
 ### Cons
 
-+ Violates the `Single Responsibility Principle`. The pattern solves two problems at the time.
-+ The `Singleton Pattern` can mask bad design, for instance, when the components of the program know too much about each other.
-+ The pattern requires special treatment in a multithreaded environment so that multiple threads won't create a singleton 
-object several times.
-+ It may be difficult to unit test the client code of the Singleton because many test frameworks rely on inheritance when
-producing mock objects. Since the constructor of the singleton class is private and overriding static methods is impossible
-in most languages, you will need to think of a creative way to mock the singleton. Or just don't write the tests. Or don't
-use the Singleton pattern.
++ The code may become more complicated since you need to introduce a lot of new subclasses to implement the pattern. The best
+case scenario is when you're introducing the pattern into an existing hierarchy of creator classes.
 
+
+## Relations with other Patterns
+
++ `Abstract Factory` classes are often based on a set of `Factory Methods`, but you can also use `Prototype` to compose
+the methods on these classes.
++ `Factory Method` is a specialization of `Template Method`. At the same time, a Factory Method may serve as a step in a
+large Template Method.
 
 ## Applicability
 
-**Use the Singleton Pattern when a class in your program should have just a single instance available to all clients; for
-example, a single database object shared by different parts of the program**
+**Use the Factory Method when you want to provide users of your library or framework with a way to extend its internal components.**
 
-The `Singleton Pattern` disables all other means of creating objects of a class except for the special creation method.
-This method either creates a new object or returns an existing one if it has already been created.
+Inheritance is probably the easiest way to extend default behavior of a library or framework. But how would the framework
+recognize that your subclass should be used instead of a standard component?
 
-**Use the Singleton pattern when you need stricter control over global variables**
+The solution is to reduce the code that constructs components across the framework into a single factory method and let
+anyone override this method in addition to extend the component itself.
 
-Unlike global variables, the `Singleton Pattern` guarantees that there's just one instance of a class. Nothing, except
-for the Singleton class itself, can replace the cached instance.
+Let's see how that would work. Imagine that you write an app using an open source UI framework. You app should have
+round buttons, but the framework only provides square ones. You extend the Standard `Button` class with a `RoundButton`
+subclass. But now you need to tell the main `UIFramework` class to use the new button subclass instead of a default one.
+
+To achieve this, you create a subclass `UIWithRoundButtons` from a base framework class and override its `createButton`
+method. While this method returns `Button` objects in the base class, you make your subclasses return `RoundButton` objects.
+Now use the `UIWithRoundButtons` class instead of `UIFramework`. And that's all about.
 
 
