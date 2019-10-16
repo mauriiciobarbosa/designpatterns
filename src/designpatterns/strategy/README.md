@@ -7,7 +7,7 @@ and make their objects interchangeable.
 
 <br />![Strategy Pattern](https://www.dofactory.com/images/diagrams/net/strategy.gif)<br /><br />
 
-In our example we used `Strategy` to encapsulate the behaviors of a duck, like fly and quack. In that way is
+In our example we used `Strategy` to encapsulate the behaviors of a *duck*, like *fly* and *quack*. In that way is
 simple to reuse them among the different types of ducks.
 
 ## Relationship with other patterns
@@ -28,12 +28,9 @@ the context at will.
 
 ### Cons
 
-+ If you only have a couple fo algorithms and they rarely change, there's no real reason to overcomplicate the program
++ If you only have a couple of algorithms and they rarely change, there's no real reason to overcomplicate the program
 with new classes and interfaces that come along with the pattern.
 + Clients must be aware of the differences between strategies to be able to select a proper one.
-+ A lot of modern programming languages have functional type support that lets you implement different versions of an 
-algorithm inside a set of anonymous functions. Then you could use these functions exactly as you'd have used the strategy
-objects, but without bloating your code with extra classes and interfaces.
 
 ## Applicability
 
