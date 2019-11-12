@@ -5,7 +5,7 @@ This repository is aimed to agregate content related to the main design patterns
 Each pattern page has a description along with its class diagram, relationship with other patterns, tips to apply, sample code
 and other topics to better comprehension of how it works.
 
-The sample code was written in kotlin in a way to make it easy to urderstanding.
+The sample code was written in kotlin in a way to make it easy to urderstand.
 
 Feel free to contribute by applying adjusts or pull requests with new patterns.
 
